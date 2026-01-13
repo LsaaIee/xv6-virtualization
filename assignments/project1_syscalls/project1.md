@@ -16,6 +16,10 @@ Extend xv6 by implementing five new system calls that expose process scheduling 
 - For ps syscall, if the pid is 0, print all processes' information
     - Otherwise, print corresponding process's information 
     - If there is no process corresponding to the pid, print nothing
-- System calls in xv6 are invoked via the `ecall` instruction, transferring control from user space to the kernel trap handler
+- System calls in xv6 are initiated via the `ecall` instruction, transferring control from user space to the kernel trap handler
 - Each system call requires updates across multiple layers, including user-level stubs, syscall number registration, and kernel-side implementations
+    - a system call number is passed through a designated register and used by the kernel to dispatch the call to the appropriate handler
+- Adding a new system call requires defining a user-level interface, including function prototypes and system call numbers, so that user programs can invoke the kernel functionality
+- On the kernel side, the system call must be registered in the syscall dispatch table and implemented in the appropriate kernel source file, allowing controlled access to kernel data structures
+- This layered structure enforces a clear boundary between user space and kernel space, preventing direct access to kernel internals while still allowing controlled interaction through system calls
 - Process-related system calls operate on the global process table and require careful handling of process identifiers
