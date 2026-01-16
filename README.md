@@ -25,7 +25,6 @@ Operating Systems course.
 ## Project Structure
 - `xv6-riscv/` : Base kernel with modifications
 - `assignments/` : Per-project design and implementation notes
-- `docs/` : Architecture and design discussions
 
 ---
 
